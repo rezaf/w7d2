@@ -1,10 +1,34 @@
 <script type="text/template" id="pokemon-list-item-template">
+  <%%= "<li class='poke-list-item' data-id='" + pokemon.escape('id') + "'>" %>
+    <%% var shortInfo = ['name', 'poke_type']; %>
+    <%% shortInfo.forEach(function (attr) { %>
+      <%%= attr + ': ' + pokemon.escape(attr) + '<br>' %>
+    <%% }); %>
+  </li>  
 </script>
 
 <script type="text/template" id="pokemon-detail-template">
+  <div class="detail">
+     <%%= "<img src='" + pokemon.escape('image_url') + "'></img>" %>
+     <%% for (var attr in pokemon.attributes) { %>
+       <%% if (pokemon.escape(attr) && attr !== 'id' && attr !== 'image_url') { %>
+         
+           <%%= '<span style="font-weight:bold;">' + attr + ':</span> ' + pokemon.escape(attr) + '<br>' %>
+        <%% } %>
+     <%% } %>
+   </div>
+   <span style="font-weight: bold;">Toys:</span><br>
+   <ul class="toys"></ul>
 </script>
 
 <script type="text/template" id="toy-list-item-template">
+  <%%= "<li class='toy-list-item' data-id='" + toy.escape('id') + "' data-pokemon-id='" + toy.escape('pokemon_id') + "'>" %> 
+
+    <%% var shortInfo = ['name', 'happiness', 'price']; %>
+    <%% shortInfo.forEach(function (attr) { %>
+      <%%= attr + ': ' + toy.escape(attr) + '<br>' %>
+    <%% }); %>
+  </li>
 </script>
 
 <script type="text/template" id="toy-detail-template">
