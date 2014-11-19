@@ -32,4 +32,25 @@
 </script>
 
 <script type="text/template" id="toy-detail-template">
+  <div class="detail">
+    <%%= '<img src="' + toy.get('image_url') + '"><br>' %>
+    <%% for (var attr in toy.attributes) { %>
+      <%% if(attr !== 'pokemon_id' && attr !== 'image_url') { %>
+        <span style="font-weight:bold;">
+        <%%= attr + ': </span>' %>
+        <%%= toy.escape(attr) %>
+        <br>
+      <%% } %>
+    <%% } %>
+    
+    <%%= '<select data-pokemon-id="' + toy.escape("pokemon_id") + '" data-toy-id="' + toy.id + '">' %>
+    <%% pokes.each(function (pokemon) { %>
+      <%%= '<option value="' + pokemon.id + '"' %>
+      <%% if (pokemon.id == toy.escape("pokemon_id")) { %>
+        <%%= "selected" %>
+      <%% } %>
+      > 
+      <%%= pokemon.escape("name") %>
+    <%% }); %>
+  </div>
 </script>
