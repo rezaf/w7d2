@@ -73,6 +73,12 @@ Pokedex.Views.ToyDetail = Backbone.View.extend({
   }
 });
 
+Pokedex.Views.PokemonForm = Backbone.View.extend({
+  render: function () {
+    this.$el.html(_)
+  }
+});
+
 
 // $(function () {
 //   var pokemonIndex = new Pokedex.Views.PokemonIndex();
